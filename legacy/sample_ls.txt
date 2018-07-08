@@ -1,0 +1,23 @@
+		// snowflake: 
+		// l.add_translation('X',"F[+X][-X]");
+		// var draw_string = l.translate_string("[X]+[X]+[X]+[X]+[X]+[X]+",6);
+		// l.add_translation('F',"FX");
+
+		// Binary Tree
+		// l.add_axiom('F');
+		// l.add_translation('X',"F[+X][-X]FX");
+		// l.add_translation('F',"FF");
+
+		// Dream Tree
+		// l.add_axiom('F');
+		// l.add_translation('X',"F[+X[++X]--X][-X[--X]++X]FX");
+		// l.add_translation('F',"FF");
+
+		// colored tree
+		// l.add_axiom('X');
+		// l.add_translation('X',"BF[+GX][-DX]FX, BF-[G[X]+X]+DF[+FX]-X,BF-[G[X]+DX]+GF[D+FX]-X");
+
+		// very_forced_random
+		// l.add_axiom('F');
+		// l.add_translation('X',"F[+X],F[-X],F[+X]F[-X],F[+X][-X],F[+[X]+[X]+[X]][-[X]-[X]-[X]],F[+X[++X]--X][-X[--X]++X]FX");
+		// l.add_translation('F',"FX");

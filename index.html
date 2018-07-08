@@ -1,68 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>L-system</title>
-	<link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-	<script src = "lsystem.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>L-Systems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="lsystem.js"></script>
+    <script src="sketch.js"></script>
 </head>
+
 <body>
-	<H1>L-System Rendering</H1>
-	<script type="text/javascript">
 
-		var h = 1000;
-		var w = 1000;
-		
-		//defining the dragon curve
-		var l = new Lsystem();
-
-		l.add_axiom('F');
-		l.add_translation('X',"F[+X][-X]FX");
-		l.add_translation('F',"FF");
-
-		l.define_len(3);
-		l.define_angle(30);
-		l.define_x(250);
-
-		var draw_string_1 = l.translate_string("X",7);
-
-
-		var l2 = new Lsystem();
-		l2.add_axiom('F');
-		l2.add_translation('X',"F[+X]F[-X]+X");
-		l2.add_translation('F',"FF");
-
-		l2.define_len(3);
-		l2.define_angle(22);
-		l2.define_x(750);
-
-		var draw_string_2 = l2.translate_string("X",7);
-
-		// Binary Tree
-		// l.add_axiom('F');
-
-		// l.add_translation('X',"F[+X][-X]FX");
-		// l.add_translation('F',"FF");
-
-		// Dream Tree
-		// l.add_axiom('F');
-
-		// l.add_translation('X',"F[+X[++X]--X][-X[--X]++X]FX");
-		// l.add_translation('F',"FF");
-
-		function setup(){
-			createCanvas(h, w);
-			angleMode(DEGREES);
-			background(0);
-			stroke(255);
-		}
-
-		function draw(){
-			l.draw_string(draw_string_1);
-			l2.draw_string(draw_string_2);
-			noLoop();
-		}
-	</script>
 </body>
+
 </html>
