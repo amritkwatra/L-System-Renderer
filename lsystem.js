@@ -14,6 +14,15 @@ class LSystem {
             "F": 'F',
             "f": "f"
         };
+        this.translation_descs = {
+            "F": "Forward w/ stroke",
+            "f": "Forward w/o stroke",
+            "+": "Rotate clockwise by rotation angle",
+            "-": "Rotate counterclockwise by rotation angle",
+            "[": "Save state",
+            "]": "Restore saved state"
+        }
+        this.user_translations = {}
         this.color_map = {};
         this.axiom = "";
     }
@@ -67,6 +76,7 @@ class LSystem {
     // mapping any translation to itself if there isn't an alternative translation already
     addTranslation(source, translations) {
         this.translations[source] = translations;
+        this.user_translations[source] = translations;
         for (const currTranslation in translations) {
             this.addSafeTranslations(currTranslation);
         };

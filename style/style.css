@@ -1,0 +1,45 @@
+@keyframes easeInAnimation {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes easeFromUpAnimation {
+    0% {
+        transform: translateY(-5%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#title_header {
+    animation: easeInAnimation 1s forwards 0s ease-out;
+    color: black;
+    font-family: 'Cutive Mono';
+    font-weight: lighter;
+}
+
+#sketch_container canvas {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.38);
+}
+
+#lsystem-details {
+    animation: easeFromUpAnimation 1s forwards 0s ease-out;
+    font-family: 'Cutive Mono';
+    font-weight: lighter;
+    font-size: 12px;
+    color: black;
+}
+
+p {
+    margin: 3px;
+    margin-bottom: 5px !important;
+}
