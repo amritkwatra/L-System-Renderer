@@ -22,6 +22,7 @@ class LSystem {
             "[": "Save state",
             "]": "Restore saved state"
         }
+        this.stroke_translations = ['F'];
         this.user_translations = {}
         this.color_map = {};
         this.axiom = "";
@@ -82,6 +83,10 @@ class LSystem {
         };
     }
 
+    addStrokeTranslation(input) {
+        this.stroke_translations.push(input);
+    }
+
     // add a 'phantom' translation mapping for any unmatched variables 
     addSafeTranslations(translation) {
         for (const char of translation) {
@@ -126,39 +131,30 @@ class LSystem {
 
     drawString(input_s) {
         for (const char of input_s) {
-            switch (char) {
-                case 'F':
-                    var newX = this._x + this.len * cos(this.theta);
-                    var newY = this._y + this.len * sin(this.theta);
-                    line(this._x, this._y, newX, newY);
-                    this._x = newX;
-                    this._y = newY;
-                    break;
-                case 'f':
-                    var newX = this._x + this.len * cos(this.theta);
-                    var newY = this._y + this.len * sin(this.theta);
-                    this._x = newX;
-                    this._y = newY;
-                    break;
-                case '+':
-                    this.theta += this.rotationAngle;
-                    break;
-                case '-':
-                    this.theta -= this.rotationAngle;
-                    break;
-                case '[':
-                    this.pushState();
-                    break;
-                case ']':
-                    let restoreState = this.popState();
-                    if (restoreState) {
-                        this.setX(restoreState.x);
-                        this.setY(restoreState.y);
-                        this.setTheta(restoreState.theta);
-                        break;
-                    }
-                default:
-                    break;
+            if (this.stroke_translations.indexOf(char) > -1) {
+                var newX = this._x + this.len * cos(this.theta);
+                var newY = this._y + this.len * sin(this.theta);
+                line(this._x, this._y, newX, newY);
+                this._x = newX;
+                this._y = newY;
+            } else if (char === 'f') {
+                var newX = this._x + this.len * cos(this.theta);
+                var newY = this._y + this.len * sin(this.theta);
+                this._x = newX;
+                this._y = newY;
+            } else if (char === '+') {
+                this.theta += this.rotationAngle;
+            } else if (char === '-') {
+                this.theta -= this.rotationAngle;
+            } else if (char === '[') {
+                this.pushState()
+            } else if (char === ']') {
+                let restoreState = this.popState();
+                if (restoreState) {
+                    this.setX(restoreState.x);
+                    this.setY(restoreState.y);
+                    this.setTheta(restoreState.theta);
+                }
             }
         }
     }

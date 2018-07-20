@@ -1,18 +1,23 @@
 let translation;
 let lsystem = new LSystem(250, 500);
+let chunked_translation;
+let chunk_i = 0;
+let chunk_size = 200;
 
 function setup() {
     angleMode(DEGREES);
-    createCanvas(1000, 500);
+    var canvas = createCanvas(500, 500);
+    canvas.parent("sketch_container")
     background(0);
-    stroke(126, 222, 229);
+    stroke(255, 255, 255);
     strokeWeight(1);
-    lsystem.setLength(2.5);
+    lsystem.setLength(1.2);
     lsystem.setRotationAngle(-25);
     lsystem.setTheta(-90);
     lsystem.addTranslation("F", ["FF"]);
     lsystem.addTranslation("X", ["F+[[X]-X]-F[-FX]+X", "F-[[X]+X]+F[+FX]-X"]);
     lsystem.defineAxiom("X");
-    translation = lsystem.translateAxiom(6);
-    lsystem.drawString(translation);
+    translation = lsystem.translateAxiom(7);
+    chunked_translation = chunked(translation, chunk_size);
+    displayLsystemDetails(lsystem);
 }

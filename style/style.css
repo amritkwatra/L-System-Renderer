@@ -23,8 +23,13 @@
 #title_header {
     animation: easeInAnimation 1s forwards 0s ease-out;
     color: black;
-    font-family: 'Cutive Mono';
+    font-family: 'Antic Didone' !important;
     font-weight: lighter;
+}
+
+.detail_tag {
+    font-weight: bolder;
+    font-size: 14px;
 }
 
 #sketch_container canvas {
@@ -34,12 +39,13 @@
 #lsystem-details {
     animation: easeFromUpAnimation 1s forwards 0s ease-out;
     font-family: 'Cutive Mono';
-    font-weight: lighter;
-    font-size: 12px;
+    /* font-weight: lighter; */
+    font-size: 10px;
     color: black;
+    padding-top: 2em;
 }
 
 p {
     margin: 3px;
-    margin-bottom: 5px !important;
+    margin-bottom: 3px !important;
 }
