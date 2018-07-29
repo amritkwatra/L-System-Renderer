@@ -1,8 +1,12 @@
 class LSystem {
-    constructor(x, y) {
+    constructor(p, x, y, theta) {
+        this.p5context = p;
         this.len = 1;
-        this.theta = 90;
+        this.theta = theta;
+        this.theta_initial = theta
         this.rotationAngle = -90;
+        this.x_initial = x;
+        this.y_initial = y;
         this._x = x;
         this._y = y;
         this._states = [];
@@ -26,6 +30,32 @@ class LSystem {
         this.user_translations = {}
         this.color_map = {};
         this.axiom = "";
+    }
+
+    writeToJson() {
+        let jsonData = JSON.stringify(this);
+        return jsonData;
+    }
+
+    buildFromJsonPath(path) {
+        $.getJSON(path, this.buildFromJson);
+    }
+
+    buildFromJson(jsonData) {
+        for (let field in jsonData) {
+            this[field] = jsonData[field];
+        }
+        this.theta = jsonData.theta_initial;
+        this._x = jsonData.x_initial;
+        this._y = jsonData.y_initial;
+    }
+
+    chunk(str, n) {
+        if (str.length <= n) {
+            return [str]
+        } else {
+            return [str.substring(0, n)].concat(this.chunk(str.substring(n, str.length), n))
+        }
     }
 
     // set how much the renderer rotates when +/- appear
@@ -132,14 +162,14 @@ class LSystem {
     drawString(input_s) {
         for (const char of input_s) {
             if (this.stroke_translations.indexOf(char) > -1) {
-                var newX = this._x + this.len * cos(this.theta);
-                var newY = this._y + this.len * sin(this.theta);
-                line(this._x, this._y, newX, newY);
+                var newX = this._x + this.len * this.p5context.cos(this.theta);
+                var newY = this._y + this.len * this.p5context.sin(this.theta);
+                this.p5context.line(this._x, this._y, newX, newY);
                 this._x = newX;
                 this._y = newY;
             } else if (char === 'f') {
-                var newX = this._x + this.len * cos(this.theta);
-                var newY = this._y + this.len * sin(this.theta);
+                var newX = this._x + this.len * this.p5context.cos(this.theta);
+                var newY = this._y + this.len * this.p5context.sin(this.theta);
                 this._x = newX;
                 this._y = newY;
             } else if (char === '+') {
@@ -157,5 +187,42 @@ class LSystem {
                 }
             }
         }
+    }
+
+    displayLsystemDetails(div_id) {
+        let details = $(div_id);
+        details.append("<p><span class = 'detail_tag'>lsystem</span> {</p>")
+        details.append("<p>&nbsp&nbsp&nbspStroke Length : " + this.len + ",</p>");
+        details.append("<p>&nbsp&nbsp&nbspIntial Angle&nbsp&nbsp: " + this.theta + ",</p>");
+        details.append("<p>&nbsp&nbspRotation Angle : " + this.rotationAngle + ",</p>")
+        details.append("<p>&nbsp&nbspOriginal Axiom : " + this.axiom + ",</p>");
+        details.append("<p>&nbsp&nbsp&nbspBuilt-in Terms: </p>");
+        for (const elm in this.translation_descs) {
+            details.append("<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + elm + " -> " + this.translation_descs[elm] + ",</p>");
+        }
+        details.append("<p>&nbsp&nbsp&nbspTranslations&nbsp&nbsp: </p>");
+        for (const elm in this.user_translations) {
+            let multiple_translations = "";
+            multiple_translations += ("<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + elm + " -> ")
+            if (this.user_translations[elm].length == 1) {
+                multiple_translations += (this.user_translations[elm] + ",</p>");
+            } else {
+                for (const translation in this.user_translations[elm]) {
+                    multiple_translations += this.user_translations[elm][translation] + " or ";
+                }
+                multiple_translations = multiple_translations.substring(0, multiple_translations.length - 3)
+                multiple_translations += "</p>";
+            }
+            details.append(multiple_translations);
+        }
+
+        let strokes_terms = "<p>&nbsp&nbsp&nbspStroke Terms &nbsp: ";
+        for (const i in this.stroke_translations) {
+            strokes_terms += this.stroke_translations[i] + ", "
+        }
+        strokes_terms += "</p>"
+        details.append(strokes_terms)
+        details.append("<p>}</p>")
+
     }
 }

@@ -23,7 +23,7 @@
 #title_header {
     animation: easeInAnimation 1s forwards 0s ease-out;
     color: black;
-    font-family: 'Antic Didone' !important;
+    font-family: 'Cutive Mono' !important;
     font-weight: lighter;
 }
 
@@ -45,7 +45,14 @@
     padding-top: 2em;
 }
 
-p {
+.white_on_black {
+    background-color: black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.38);
+    color: white;
+    font-family: 'Antic Didone' !important;
+}
+
+#lsystem-details p {
     margin: 3px;
     margin-bottom: 3px !important;
 }
