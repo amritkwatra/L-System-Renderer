@@ -1,10 +1,10 @@
 {
-    "len": 1.2,
+    "len": 5,
     "theta": -115,
     "theta_initial": -90,
-    "rotationAngle": -25,
-    "x_initial": 350,
-    "y_initial": 580,
+    "rotationAngle": -90,
+    "x_initial": 400,
+    "y_initial": 150,
     "_x": 321.7901138038951,
     "_y": 285.50148480345695,
     "_states": [],
@@ -15,9 +15,8 @@
         "-": "-",
         "]": "]",
         "[": "[",
-        "f": "f",
-        "F": ["FF"],
-        "X": ["F+[[X]-X]-F[-FX]+X", "F-[[X]+X]+F[+FX]-X"]
+        "L": ["L+R+"],
+        "R": ["-L-R"]
     },
     "translation_descs": {
         "F": "Forward w/ stroke",
@@ -27,11 +26,11 @@
         "[": "Save state",
         "]": "Restore saved state"
     },
-    "stroke_translations": ["F"],
+    "stroke_translations": ["L", "R"],
     "user_translations": {
-        "F": ["FF"],
-        "X": ["F+[[X]-X]-F[-FX]+X", "F-[[X]+X]+F[+FX]-X"]
+        "L": ["L+R+"],
+        "R": ["-L-R"]
     },
     "color_map": {},
-    "axiom": "X"
+    "axiom": "L"
 }

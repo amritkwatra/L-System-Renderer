@@ -151,6 +151,8 @@ class LSystem {
                     let possibleTranslations = this.translations[char];
                     let selectedTranslation = this.selectedTranslation(possibleTranslations);
                     translation += selectedTranslation;
+                } else if (this.color_map.hasOwnProperty(char)) {
+                    continue;
                 } else {
                     throw "Undefined Translation for char: " + char;
                 }
@@ -185,6 +187,8 @@ class LSystem {
                     this.setY(restoreState.y);
                     this.setTheta(restoreState.theta);
                 }
+            } else if (this.color_map.hasOwnProperty(char)) {
+                this.p5context.stroke(this.color_map[char][0], this.color_map[char][1], this.color_map[char][2]);
             }
         }
     }
@@ -214,6 +218,13 @@ class LSystem {
                 multiple_translations += "</p>";
             }
             details.append(multiple_translations);
+        }
+        details.append("<p>&nbsp&nbsp&nbspColor Map&nbsp&nbsp: </p>");
+
+        for (let field in this.color_map) {
+            if (this.color_map.hasOwnProperty(field)) {
+                details.append("<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + field + " -> rgb(" + this.color_map[field] + ")</p>");
+            }
         }
 
         let strokes_terms = "<p>&nbsp&nbsp&nbspStroke Terms &nbsp: ";

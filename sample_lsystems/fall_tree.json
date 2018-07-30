@@ -15,9 +15,16 @@
         "-": "-",
         "]": "]",
         "[": "[",
+        "F": ["BFF"],
         "f": "f",
-        "F": ["FF"],
-        "X": ["F+[[X]-X]-F[-FX]+X", "F-[[X]+X]+F[+FX]-X"]
+        "X": [
+            "BF+[[X]-X]-OF[-FX]+X",
+            "BF-[[X]+X]O+F[+FX]-X",
+            "BF+[[X]-X]-RF[-FX]+X",
+            "BF-[[X]+X]R+F[+FX]-X",
+            "BF+[[X]-X]-YF[-FX]+X",
+            "BF-[[X]+X]Y+F[+FX]-X"
+        ]
     },
     "translation_descs": {
         "F": "Forward w/ stroke",
@@ -30,8 +37,14 @@
     "stroke_translations": ["F"],
     "user_translations": {
         "F": ["FF"],
-        "X": ["F+[[X]-X]-F[-FX]+X", "F-[[X]+X]+F[+FX]-X"]
+        "X": ["BF+[[X]-X]-GF[-FX]+X", "BF-[[X]+X]G+F[+FX]-X"]
     },
-    "color_map": {},
+    "color_map": {
+        "B": [119, 82, 47],
+        "G": [4, 158, 112],
+        "R": [109, 23, 12],
+        "O": [224, 123, 22],
+        "Y": [165, 183, 29]
+    },
     "axiom": "X"
 }

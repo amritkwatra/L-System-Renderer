@@ -1,6 +1,5 @@
 let lSystemSketch = (data) => (p5Context) => {
     let jsonData = data;
-    console.log(jsonData);
     let translation;
     let lsystem = new LSystem(p5Context, 350, 580, 90);
     let chunked_translation;
@@ -15,7 +14,8 @@ let lSystemSketch = (data) => (p5Context) => {
         p5Context.stroke(255, 255, 255);
         p5Context.strokeWeight(1);
         lsystem.buildFromJson(jsonData);
-        translation = lsystem.translateAxiom(7);
+        translation = lsystem.translateAxiom(8);
+        lsystem.setLength(0.75);
         chunked_translation = lsystem.chunk(translation, chunk_size);
         lsystem.displayLsystemDetails("#lsystem-details");
     };
@@ -34,5 +34,3 @@ let lSystemSketch = (data) => (p5Context) => {
 function startLSystemSketch(data) {
     new p5(lSystemSketch(data));
 }
-
-$.getJSON('sample_lsystems/two_branch_tree.json', startLSystemSketch);
