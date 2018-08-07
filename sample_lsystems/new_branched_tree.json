@@ -1,0 +1,45 @@
+{
+    "len": 0.75,
+    "theta": -115,
+    "theta_initial": -90,
+    "rotationAngle": -25,
+    "x_initial": 350,
+    "y_initial": 580,
+    "_x": 321.7901138038951,
+    "_y": 285.50148480345695,
+    "_states": [],
+    "translations": {
+        "0": "0",
+        "1": "1",
+        "+": "+",
+        "-": "-",
+        "]": "]",
+        "[": "[",
+        "F": ["BFF"],
+        "f": "f",
+        "X": ["F+G[[X]-X]-F[-FX]+X", "F-G[[X]+X]+F[+FX]-X", "FO[+X]F[-X]+X", "FO[+X][-X]FX"]
+    },
+    "translation_descs": {
+        "F": "Forward w/ stroke",
+        "f": "Forward w/o stroke",
+        "+": "Rotate clockwise by rotation angle",
+        "-": "Rotate counterclockwise by rotation angle",
+        "[": "Save state",
+        "]": "Restore saved state"
+    },
+    "stroke_translations": ["F"],
+    "user_translations": {
+        "F": ["BF+F", "BF-F", "B-FF", "B+FF", "BF"],
+        "X": ["F+G[[X]-X]-F[-FX]+X", "F-G[[X]+X]+F[+FX]-X", "FO[+X]F[-X]+X", "FO[+X][-X]FX",
+            "F-G-X[[X]+X]-[+FX]-X", "-FG[[X]+X]++F[+FX]-X"
+        ]
+    },
+    "color_map": {
+        "B": [94, 59, 27],
+        "G": [4, 158, 112],
+        "R": [109, 23, 12],
+        "O": [224, 123, 22],
+        "Y": [165, 183, 29]
+    },
+    "axiom": "X"
+}
