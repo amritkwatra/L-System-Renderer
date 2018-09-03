@@ -44,7 +44,12 @@
     </div>
 </body>
 <script>
-    $.getJSON("sample_lsystems/new_branched_tree.json", startLSystemSketch);
+    let lsystems = ["sample_lsystems/new_branched_tree.json", "sample_lsystems/fall_tree.json",
+        "sample_lsystems/neon_tree.json",
+        "sample_lsystems/green_tree.json"
+    ];
+    let sampledLsystem = lsystems[Math.floor(Math.random() * lsystems.length)];
+    $.getJSON(sampledLsystem, startLSystemSketch);
 </script>
 
 </html>
