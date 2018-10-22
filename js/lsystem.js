@@ -196,11 +196,11 @@ class LSystem {
     displayLsystemDetails(div_id) {
         let details = $(div_id);
         details.append("<p><span class = 'detail_tag'>lsystem</span> {</p>")
-        details.append("<p>&nbsp&nbsp&nbspStroke Length : " + this.len + ",</p>");
-        details.append("<p>&nbsp&nbsp&nbspIntial Angle&nbsp&nbsp: " + this.theta + ",</p>");
-        details.append("<p>&nbsp&nbspRotation Angle : " + this.rotationAngle + ",</p>")
-        details.append("<p>&nbsp&nbspOriginal Axiom : " + this.axiom + ",</p>");
-        details.append("<p>&nbsp&nbsp&nbspBuilt-in Terms: </p>");
+        details.append("<p>&nbspStroke Length : " + this.len + ",</p>");
+        details.append("<p>&nbspIntial Angle&nbsp: " + this.theta + ",</p>");
+        details.append("<p>&nbspRotation Angle : " + this.rotationAngle + ",</p>")
+        details.append("<p>&nbspOriginal Axiom : " + this.axiom + ",</p>");
+        details.append("<p>&nbspBuilt-in Terms: </p>");
         for (const elm in this.translation_descs) {
             details.append("<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + elm + " -> " + this.translation_descs[elm] + ",</p>");
         }

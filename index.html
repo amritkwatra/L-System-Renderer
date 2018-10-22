@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>L-Systems</title>
+    <title>L-System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
@@ -23,8 +23,9 @@
 
 <body>
     <div class="container">
-        <h1 class="display-4" id='title_header'>L. Systems</h1>
-        <hr class="my-12" style="border-color: black">
+        <h1 class="display-4" id='title_header'>L. System</h1>
+        <p id='author'>amrit kwatra</p>
+        <!-- <hr class="my-12" style="border-color: black"> -->
         <!-- More details about other l-systems -->
         <div class="row">
             <div class="col-4" id="display_1"></div>
@@ -44,10 +45,7 @@
     </div>
 </body>
 <script>
-    let lsystems = ["sample_lsystems/new_branched_tree.json", "sample_lsystems/fall_tree.json",
-        "sample_lsystems/neon_tree.json",
-        "sample_lsystems/green_tree.json"
-    ];
+    let lsystems = ["sample_lsystems/fall_tree.json"];
     let sampledLsystem = lsystems[Math.floor(Math.random() * lsystems.length)];
     $.getJSON(sampledLsystem, startLSystemSketch);
 </script>

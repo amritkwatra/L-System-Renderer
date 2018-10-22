@@ -3,6 +3,7 @@
         transform: translateX(-20px);
         opacity: 0;
     }
+
     100% {
         transform: translateX(0px);
         opacity: 1;
@@ -14,6 +15,7 @@
         transform: translateY(-5%);
         opacity: 0;
     }
+
     100% {
         transform: translateY(0);
         opacity: 1;
@@ -23,7 +25,7 @@
 #title_header {
     animation: easeInAnimation 1s forwards 0s ease-out;
     color: black;
-    font-family: 'Cutive Mono' !important;
+    /* font-family: 'Cutive Mono' !important; */
     font-weight: lighter;
 }
 
@@ -38,12 +40,14 @@
 
 #lsystem-details {
     animation: easeFromUpAnimation 1s forwards 0s ease-out;
-    font-family: 'Cutive Mono';
+    /* font-family: 'Cutive Mono'; */
     /* font-weight: lighter; */
     font-size: 10px;
     color: black;
     padding-top: 2em;
 }
+
+#author {}
 
 .white_on_black {
     background-color: black;
