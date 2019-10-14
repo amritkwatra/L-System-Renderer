@@ -3,7 +3,8 @@ class LSystem {
         this.p5context = p;
         this.len = 1;
         this.theta = theta;
-        this.theta_initial = theta
+        this.theta_initial = theta;
+        this.num_iters = 5;
         this.rotationAngle = -90;
         this.x_initial = x;
         this.y_initial = y;
